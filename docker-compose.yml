@@ -15,7 +15,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - cis_postgres_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d rag"]
       interval: 10s
@@ -37,4 +37,4 @@ services:
     restart: "no"
 
 volumes:
-  postgres_data:
+  cis_postgres_data:
