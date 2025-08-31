@@ -1,7 +1,13 @@
 services:
+  challenge-intake-search:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cis
+    
   postgres:
     image: pgvector/pgvector:pg17
-    container_name: postgres_rag
+    container_name: cis_postgres_rag
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -19,6 +25,7 @@ services:
 
   bootstrap_vector_ext:
     image: pgvector/pgvector:pg17
+    container_name: cis_bootstrap_vector_ext
     depends_on:
       postgres:
         condition: service_healthy
