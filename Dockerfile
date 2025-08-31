@@ -1,6 +1,7 @@
 # Use the official Python 3 image based on Alpine Linux
 FROM mcr.microsoft.com/devcontainers/python:3.12-bullseye
 
+
 RUN apt update && apt install -y git-lfs
 
 # Create and activate a virtual environment
@@ -8,5 +9,8 @@ RUN apt update && apt install -y git-lfs
 # RUN python3 -m venv venv &&. venv/bin/activate
 
 # PYTHON LIBS
+WORKDIR /home/vscode
 COPY requirements.txt .
-RUN pip install -r requirements.txt && pip install --upgrade pip
+RUN pip install -r requirements.txt && pip install --upgrade pip && rm -rf requirements.txt
+
+WORKDIR /workspace
