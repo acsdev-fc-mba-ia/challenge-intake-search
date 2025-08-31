@@ -4,6 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: cis
+    volumes:
+      - .:/workspace:cached
+    command: sleep infinity
     
   postgres:
     image: pgvector/pgvector:pg17
