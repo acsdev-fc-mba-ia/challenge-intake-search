@@ -1,3 +1,5 @@
+from langchain.prompts import PromptTemplate
+
 PROMPT_TEMPLATE = """
 CONTEXTO:
 {contexto}
@@ -26,4 +28,4 @@ RESPONDA A "PERGUNTA DO USUÁRIO"
 """
 
 def search_prompt():
-    pass
+    return PromptTemplate.from_template(template=PROMPT_TEMPLATE)
