@@ -11,15 +11,23 @@ from langchain_postgres import PGVector
 
 load_dotenv()
 
-PDF_PATH = os.getenv("PDF_PATH")
+def get_pdf_path() -> Path:
+    """Get the absolute path to the PDF file."""
+    current_dir = Path(__file__).parent
+    pdf_path = current_dir / os.getenv("PDF_PATH")
+    print(f"PDF Path: {pdf_path}")
+    return pdf_path
+
+PDF_PATH = get_pdf_path()
 LLM_API_KEY = os.getenv("LLM_API_KEY")
 DATABASE_URL = os.getenv("DATABASE_URL")
 PG_VECTOR_COLLECTION_NAME = os.getenv("PG_VECTOR_COLLECTION_NAME")
 
+
 def validate_environment():
     """Validate environment variables."""
-    if not PDF_PATH or not Path(PDF_PATH).exists():
-        raise ValueError("Invalid PDF_PATH environment variable")
+    if not PDF_PATH or not PDF_PATH.exists():
+        raise ValueError("Invalid PDF PATH: PDF_PATH environment variable or file do not exist")
 
     for k in (LLM_API_KEY, DATABASE_URL, PG_VECTOR_COLLECTION_NAME):
         if not k:
@@ -97,3 +105,4 @@ def ingest_pdf():
 if __name__ == "__main__":
     validate_environment()
     ingest_pdf()
+    print("Ingestion complete.")
