@@ -71,7 +71,25 @@ def persist_embeddings(chunks: list[Document]):
     )
     pgvector.create_tables_if_not_exists()
     pgvector.add_documents(documents=chunks, ids=chunk_ids)
-    
+
+def search_pdf(query: str) -> list[Document]:
+    """Search for documents in the PDF database.
+
+    Args:
+        query (str): The search query.
+
+    Returns:
+        list[Document]: A list of relevant documents.
+    """
+    embeddings = GoogleGenerativeAIEmbeddings(google_api_key=LLM_API_KEY, model="models/embedding-001")
+    pgvector = PGVector(
+        embeddings=embeddings,
+        collection_name=PG_VECTOR_COLLECTION_NAME,
+        connection=DATABASE_URL,
+        use_jsonb=True
+    )
+    return pgvector.similarity_search(query, k=10)
+
 def ingest_pdf():
     chunks = get_chunks()
     persist_embeddings(chunks)
