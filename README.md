@@ -1,8 +1,5 @@
 # Desafio MBA Engenharia de Software com IA - Full Cycle
 
-
-Descreva abaixo como executar a sua solução.
-
 ### Como rodar o projeto utilizado devcontainer
 
 1. Abra o vscode
