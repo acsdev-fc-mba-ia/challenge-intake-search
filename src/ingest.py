@@ -15,7 +15,7 @@ def get_pdf_path() -> Path:
     """Get the absolute path to the PDF file."""
     current_dir = Path(__file__).parent
     pdf_path = current_dir / os.getenv("PDF_PATH")
-    print(f"PDF Path: {pdf_path}")
+    # print(f"PDF Path: {pdf_path}") # for debugging
     return pdf_path
 
 PDF_PATH = get_pdf_path()
