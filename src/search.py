@@ -1,4 +1,4 @@
-from langchain.prompts import PromptTemplate
+from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 PROMPT_TEMPLATE = """
 CONTEXTO:
@@ -26,6 +26,10 @@ PERGUNTA DO USUÁRIO:
 
 RESPONDA A "PERGUNTA DO USUÁRIO"
 """
-
 def search_prompt():
-    return PromptTemplate.from_template(template=PROMPT_TEMPLATE)
+    
+    return ChatPromptTemplate.from_messages([
+        ("system", PROMPT_TEMPLATE),
+        MessagesPlaceholder("historico"),
+        ("human", "{pergunta}"),
+    ])
