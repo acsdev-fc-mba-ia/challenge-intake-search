@@ -14,14 +14,9 @@ load_dotenv()
 def get_pdf_path() -> Path:
     """Get the absolute path to the PDF file."""
     current_dir = Path(__file__).parent
-    pdf_path = current_dir / os.getenv("PDF_PATH")
+    pdf_path = Path(f"{current_dir}/{os.getenv("PDF_PATH")}")
     # print(f"PDF Path: {pdf_path}") # for debugging
     return pdf_path
-
-PDF_PATH = get_pdf_path()
-LLM_API_KEY = os.getenv("LLM_API_KEY")
-DATABASE_URL = os.getenv("DATABASE_URL")
-PG_VECTOR_COLLECTION_NAME = os.getenv("PG_VECTOR_COLLECTION_NAME")
 
 
 def validate_environment():
@@ -102,6 +97,10 @@ def ingest_pdf():
     chunks = get_chunks()
     persist_embeddings(chunks)
 
+PDF_PATH = get_pdf_path()
+LLM_API_KEY = os.getenv("LLM_API_KEY")
+DATABASE_URL = os.getenv("DATABASE_URL")
+PG_VECTOR_COLLECTION_NAME = os.getenv("PG_VECTOR_COLLECTION_NAME")
 if __name__ == "__main__":
     validate_environment()
     ingest_pdf()
