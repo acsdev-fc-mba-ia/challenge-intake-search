@@ -52,7 +52,7 @@ def prepare_inputs(payload: dict) -> dict:
         for msg in raw_history:
             print(f"{msg.type}: {msg.content}")
         print("============================")
-    debug_history()
+    # debug_history()
     
     return {"pergunta": payload.get("pergunta",""), "contexto":payload.get("contexto",""), "historico": trimmed}
 
