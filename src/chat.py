@@ -79,13 +79,14 @@ def main():
         history_messages_key="historico_nao_tratado"
     )
 
-    user_question = input("Olá, Faça um pergunta ou digite 'sair' para encerrar o programa! \n")
+    user_question = input("Olá, Infome como posso te ajudar ou digite 'sair' para encerrar o programa! \n" + f"."*75+"\n")
     while True:    
         awnsers = getAwnserFromDB(user_question)
         config = {"configurable": {"session_id": "demo-session"}}
         
         llmawnser = conversational_chain.invoke({"pergunta": user_question, "contexto": awnsers}, config=config)
         print(llmawnser.content), 
+        print("."*75)
         
         user_question = input()
         if user_question.lower() in ["sair", "exit", "quit"]:
