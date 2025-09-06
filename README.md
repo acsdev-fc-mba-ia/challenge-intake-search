@@ -56,8 +56,23 @@ Ingestion complete.
 ```text
 $ make run-chat
 docker exec -it cis /bin/bash -c "python ./src/chat.py"
-Olá, Faça um pergunta! Qual é o faturamento da empresa Alfa Agronegócio Indústria em 1931?
-R$ 85.675.568,77
+Olá, Infome como posso te ajudar ou digite 'sair' para encerrar o programa! 
+...........................................................................
+Liste 10 empresas
+1. Aliança Energia Participações
+2. Aliança Esportes Comércio
+3. Aliança Esportes ME
+4. Aliança Hotelaria Comércio
+5. Aliança Hotelaria EPP
+6. Aliança Logística ME
+7. Aliança Mineração Holding
+8. Aliança Mídia LTDA
+9. Aliança Publicidade Serviços
+10. Aliança Siderurgia ME
+...........................................................................
+Informe o faturamento e o ano da sétima empresa
+Aliança Mineração Holding R$ 148.721,33 1999
+...........................................................................
 ```
 
 **Reposta negativa**
@@ -65,6 +80,9 @@ R$ 85.675.568,77
 ```text
 $ make run-chat
 docker exec -it cis /bin/bash -c "python ./src/chat.py"
-Olá, Faça um pergunta! Qual é o faturamento da empresa Alfa Agronegócio Indústria em 2000?
+Olá, Infome como posso te ajudar ou digite 'sair' para encerrar o programa! 
+...........................................................................
+Qual é o faturamento da empresa Alfa Agronegócio Indústria em 2000?
 Não tenho informações necessárias para responder sua pergunta.
+...........................................................................
 ```
