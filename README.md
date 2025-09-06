@@ -1,6 +1,18 @@
 # Desafio MBA Engenharia de Software com IA - Full Cycle
 
+## Instruções para execução do projeto
+
+### Configure o arquivo .env com os seguintes valores
+
+```text
+LLM_API_KEY=# Adicione GEMINI KEY HERE
+DATABASE_URL=postgresql+psycopg://postgres:postgres@postgres:5432/rag
+PG_VECTOR_COLLECTION_NAME=pdf_collection
+PDF_PATH=../document.pdf
+```
+
 ### Como rodar o projeto utilizado devcontainer
+
 
 1. Abra o vscode
     - Installe a extenção dev containers https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers **se necessário**.
